@@ -3,32 +3,28 @@
 
 int main(void)
 {
-	int true[29];
-	int min, max, tmp;
+	int total_stud = 30;
+	int sub_st = 28;
+	int sub[28];
+	int not_sub[2];
+	int found = 0;
 
-	for (int j = 0; j < 28; j++) {
-		scanf("%d", &true[j]);
+	for (int i = 0; i < sub_st; i++) {
+		scanf("%d", &sub[i]);
+	}
+	int all_stud[30] = { 0 };
+
+	for (int i = 0; i < sub_st; i++) {
+		all_stud[sub[i] - 1] = 1;
+	}
+	for (int i = 0; i < total_stud; i++) {
+		if (all_stud[i] == 0) {
+			not_sub[found] = i + 1;
+			found++;
+		}
 	}
 
-	for (int k = 0; k < 28; k++) {
-		for (int n = 0; n < 28; n++) {
-			if (true[n] != (k+1)) {
-				min = true[n];
-				break;
-			}
-		}
-		for (int m = 0; m < 28; m++) {
-			if (true[m] != (k + 1)) {
-				max = true[m];
-				break;
-			}
-		}
-		if (min > max) {
-			tmp = min;
-			min = max;
-			max = tmp;
-		}
-	}
-	printf("%d\n%d", min, max);
+	for (int i = 0; i < 2; i++)
+		printf("%d\n", not_sub[i]);
 	return 0;
 }
