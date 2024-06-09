@@ -3,19 +3,18 @@
 #include <string.h>
 
 int main(void) {
-	char s[11][1001];
-	int n, i;
+	char s[100][101];
+	int i;
 
-	scanf("%d", &n);
-
-	for (i = 0; i <= n; i++) {
-		gets(s[i]);
-	}
-	for (i = 0; i <= n; i++) {
-		int len = strlen(s[i]);
-		if (len > 0) {
-			printf("%c%c\n", s[i][0], s[i][len - 1]);
+	for (i = 0; i < 100; i++) {
+		if (fgets(s[i], 100, stdin) == NULL) {
+			break;
 		}
 	}
+
+	for (int j = 0; j < i; j++) {
+		printf("%s", s[j]);
+	}
+
 	return 0;
 }
